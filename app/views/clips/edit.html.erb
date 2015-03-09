@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>YouClip!</h1>
+
+  <div ng-controller="clipController">
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <youtube width="640" height="390" duration="duration" seek-point="seekPoint" clip-points="clipPoints" video-id="<%= @clip.video_id %>"></youtube>
+      </div>
+
+      <div class="col-sm-3 col-md-2 text-center">
+        <button ng-click="sendControlEvent(YT_event.SEEK_IN)" class="btn btn-default">Seek to In Point</button>
+      </div>
+
+      <div class="col-sm-6 col-md-8">
+        <div ui-slider="slider.options" min="0" max="{{duration}}" ng-model="clipPoints"></div>
+      </div>
+
+      <div class="col-sm-3 col-md-2 text-center">
+        <button ng-click="sendControlEvent(YT_event.SEEK_OUT)" class="btn btn-default">Seek to Out Point</button>
+      </div>
+    </div>
+  </div>
+</div>
