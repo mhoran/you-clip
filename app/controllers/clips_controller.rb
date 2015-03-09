@@ -6,11 +6,15 @@ class ClipsController < ApplicationController
   def create
     @clip = Clip.new(clip_params)
 
-    if @clip.valid?
-      render :edit
+    if @clip.save
+      redirect_to edit_clip_path(@clip.id)
     else
       render :new
     end
+  end
+
+  def edit
+    @clip = Clip.find(params[:id])
   end
 
   private
