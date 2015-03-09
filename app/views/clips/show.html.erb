@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>YouClip!</h1>
+
+  <div ng-init="videoId = '<%= @clip.video_id %>'; clipPoints = [<%= @clip.in_point %>, <%= @clip.out_point %>]">
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <youtube width="640" height="390" clip-points="clipPoints" video-id="videoId"></youtube>
+      </div>
+    </div>
+  </div>
+</div>

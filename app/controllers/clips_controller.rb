@@ -17,9 +17,21 @@ class ClipsController < ApplicationController
     @clip = Clip.find(params[:id])
   end
 
+  def update
+    @clip = Clip.find(params[:id])
+
+    @clip.update_attributes(clip_params)
+
+    redirect_to clip_path(@clip.id)
+  end
+
+  def show
+    @clip = Clip.find(params[:id])
+  end
+
   private
 
   def clip_params
-    params.require(:clip).permit(:url)
+    params.require(:clip).permit(:url, :in_point, :out_point)
   end
 end

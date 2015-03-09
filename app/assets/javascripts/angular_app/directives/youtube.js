@@ -8,9 +8,9 @@ angular.module('app').directive('youtube', function($window, YT_event) {
     scope: {
       height: "@",
       width: "@",
-      videoId: "@",
-      duration: "=",
-      seekPoint: "=",
+      videoId: "=",
+      duration: "=?",
+      seekPoint: "=?",
       clipPoints: "="
     },
 
@@ -35,7 +35,9 @@ angular.module('app').directive('youtube', function($window, YT_event) {
             color: "white",
             iv_load_policy: 3,
             showinfo: 1,
-            controls: 1
+            controls: 1,
+            start: scope.clipPoints[0],
+            end: scope.clipPoints[1]
           },
           
           height: scope.height,

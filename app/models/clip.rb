@@ -10,4 +10,12 @@ class Clip < ActiveRecord::Base
       "https://www.youtube.com/watch?v=#{video_id}"
     end
   end
+
+  def in_point
+    super.presence || 0
+  end
+
+  def out_point
+    super.presence || 0
+  end
 end

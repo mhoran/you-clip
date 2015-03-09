@@ -1,10 +1,10 @@
 <div class="container">
   <h1>YouClip!</h1>
 
-  <div ng-controller="clipController">
+  <div ng-controller="clipController" ng-init="videoId = '<%= @clip.video_id %>'">
     <div class="row">
       <div class="col-xs-12 text-center">
-        <youtube width="640" height="390" duration="duration" seek-point="seekPoint" clip-points="clipPoints" video-id="<%= @clip.video_id %>"></youtube>
+        <youtube width="640" height="390" duration="duration" seek-point="seekPoint" clip-points="clipPoints" video-id="videoId"></youtube>
       </div>
 
       <div class="col-sm-3 col-md-2 text-center">
@@ -17,6 +17,14 @@
 
       <div class="col-sm-3 col-md-2 text-center">
         <button ng-click="sendControlEvent(YT_event.SEEK_OUT)" class="btn btn-default">Seek to Out Point</button>
+      </div>
+
+      <div class="col-xs-12 text-center">
+        <%= simple_form_for @clip do |form| %>
+          <%= form.hidden_field :in_point, value: '{{clipPoints[0]}}' %>
+          <%= form.hidden_field :out_point, value: '{{clipPoints[1]}}' %>
+          <%= form.submit 'Save Clip', class: 'btn btn-primary' %>
+        <% end %>
       </div>
     </div>
   </div>
